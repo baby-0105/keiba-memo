@@ -18,8 +18,16 @@ DB_PASSWORD=[任意]
 
 ```
 docker-compose up -d
-docker exec -it laravel_app composer install --no-dev --optimize-autoloader
-docker exec -it laravel_app php artisan key:generate
+docker exec -it <appコンテナ名> composer install --no-dev --optimize-autoloader
+docker exec -it <appコンテナ名> php artisan key:generate
+```
+
+dbで表示時の文字化け対策
+```
+docker exec -it db bash
+cd /root
+echo "[client]
+default-character-set=utf8mb4" > .my.cnf
 ```
 
 localhost:8000 へアクセス
