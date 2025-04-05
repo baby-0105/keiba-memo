@@ -22,12 +22,4 @@ docker exec -it <appコンテナ名> composer install --no-dev --optimize-autolo
 docker exec -it <appコンテナ名> php artisan key:generate
 ```
 
-dbで表示時の文字化け対策
-```
-docker exec -it db bash
-cd /root
-echo "[client]
-default-character-set=utf8mb4" > .my.cnf
-```
-
 localhost:8000 へアクセス
