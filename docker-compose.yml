@@ -2,7 +2,7 @@ version: '3.8'
 services:
   app:
     build: ./docker/php
-    container_name: laravel_app
+    container_name: keiba-memo
     volumes:
       - ./backend:/var/www/html
       # default.confを明示的にマウント
@@ -11,6 +11,7 @@ services:
       - db
     environment:
       - APP_ENV=local  # 環境を開発モードに設定
+      - DB_HOST=db
     ports:
       - "8000:80"
 

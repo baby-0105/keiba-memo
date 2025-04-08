@@ -1,10 +1,10 @@
 import React from "react";
+import OsakaHaiRaceMemo from "./components/OsakaHaiRaceMemo";
 
 function App() {
   return (
     <div>
-      <h1>Laravel + React 🎉</h1>
-      <p>この画面は LaravelのBlade から React を描画しています</p>
+      <OsakaHaiRaceMemo />
     </div>
   );
 }
