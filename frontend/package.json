@@ -9,8 +9,6 @@
         "@testing-library/user-event": "^13.5.0",
         "axios": "^1.8.4",
         "lucide-react": "^0.487.0",
-        "react": "^19.0.0",
-        "react-dom": "^19.0.0",
         "react-scripts": "5.0.1",
         "web-vitals": "^2.1.4"
     },
@@ -38,5 +36,10 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "react": "^19.1.0",
+        "react-dom": "^19.1.0",
+        "vite": "^6.2.6"
     }
 }

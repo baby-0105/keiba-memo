@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('races', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->timestamp('start_at')->unique();
+            $table->date('start_date');
+            $table->foreignId('racetrack_master_id')->constrained()->onDelete('cascade');
+            $table->integer('race_num');
+            $table->boolean('is_display_to_index')->default(false)->comment('レース一覧へ表示するか：true or false');
             $table->timestamps();
         });
     }

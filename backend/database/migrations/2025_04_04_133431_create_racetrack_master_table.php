@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('horse_races', function (Blueprint $table) {
+        Schema::create('racetrack_masters', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('horse_id')->constrained()->onDelete('cascade');
-            $table->foreignId('race_id')->constrained()->onDelete('cascade');
-            $table->boolean('is_entry_confirmed')->default(true)->comment('出走確定したか：true or false');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('horse_races');
+        Schema::dropIfExists('racetrack_masters');
     }
 };
