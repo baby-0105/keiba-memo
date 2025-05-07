@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["php", "phpPackages.composer"]
+nixPkgs = ["php", "phpPackages.composer", "nodejs"]
 
 [phases.build]
 cmds = ["composer install", "php artisan config:clear"]
