@@ -23,3 +23,12 @@ docker exec -it <appコンテナ名> php artisan key:generate
 ```
 
 localhost:8000 へアクセス
+
+# railway関連
+```
+// mysqlコマンド
+mysql -h hopper.proxy.rlwy.net -P 26286 -u root -p
+
+// マイグレーション
+railway run bash -c "cd backend && php artisan migrate"
+```
