@@ -24,7 +24,7 @@ $devMode = env('APP_ENV') === 'local'; // 環境変数で開発モードを判�
             }
         }
         ?>
-        <script src="{{ asset($jsFile) }}" defer></script>
+        <script src="{{ secure_asset($jsFile) }}" defer></script>
     <?php endif; ?>
 </head>
 <body>
