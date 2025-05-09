@@ -118,7 +118,7 @@ class RaceController extends Controller
     public function scraping()
     {
         $client = new Client();
-        $url = 'https://www.keibalab.jp/db/race/202504270511/umabashira.html?kind=yoko';
+        $url = 'https://www.keibalab.jp/db/race/202505100811/umabashira.html?kind=yoko';
 
         $response = $client->request('GET', $url, [
             'headers' => [
