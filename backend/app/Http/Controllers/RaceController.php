@@ -115,10 +115,10 @@ class RaceController extends Controller
         return redirect()->back()->with('message', '馬メモを保存しました');
     }
 
-    public function scraping()
+    public function scraping(Request $request)
     {
         $client = new Client();
-        $url = 'https://www.keibalab.jp/db/race/202505100811/umabashira.html?kind=yoko';
+        $url = 'https://www.keibalab.jp/db/race/' . $request->race_id . '/umabashira.html?kind=yoko';
 
         $response = $client->request('GET', $url, [
             'headers' => [
