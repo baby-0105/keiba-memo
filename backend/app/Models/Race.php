@@ -11,6 +11,7 @@ class Race extends Model
         'start_date',
         'racetrack_master_id',
         'race_num',
+        'is_display_to_index',
     ];
 
     public function racetrackMaster()

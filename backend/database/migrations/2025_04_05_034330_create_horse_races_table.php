@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('horse_id')->constrained()->onDelete('cascade');
             $table->foreignId('race_id')->constrained()->onDelete('cascade');
             $table->boolean('is_entry_confirmed')->default(true)->comment('出走確定したか：true or false');
+            $table->unique(['horse_id', 'race_id'], 'unique_horse_race'); // 複合ユニーク
             $table->timestamps();
         });
     }

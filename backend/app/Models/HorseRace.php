@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class HorseRace extends Model
 {
     protected $table = 'horse_races';
-    public $timestamps = false;
     protected $fillable = ['horse_id', 'race_id'];
 
     public function horse()
