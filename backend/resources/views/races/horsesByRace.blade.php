@@ -60,7 +60,10 @@
                         <td>
                             <div class="font-bold">{{ $horse['name'] }}</div>
                             <div class="text-sm text-gray-600">
-                                <a href="#" onclick="openHorseMemoModal({{ $horse['id'] }}, '{{ $horse['horse_memo'] ?? '' }}')">
+                                <a href="#"
+                                    class="open-horse-memo"
+                                    data-horse-id="{{ $horse['id'] }}"
+                                    data-memo="{{ e($horse['horse_memo'] ?? '') }}">
                                     {{ $horse['horse_memo'] ?? '...' }} ✏️
                                 </a>
                             </div>
@@ -71,7 +74,11 @@
                                     <div style="font-size: 12px; color: gray">{{ $i !== 0 ? $horse['past_races'][$i]->name : '' }}</div>
                                     <span>
                                         @if ($horse['is_confirmed'] ?? true)
-                                            <a href="#" onclick="openModal({{ $horse['id'] }}, {{ $horse['past_races'][$i]->id }}, '{{ $horse['past_races'][$i]->memo ?? '' }}')">
+                                            <a href="#"
+                                                class="open-memo"
+                                                data-horse-id="{{ $horse['id'] }}"
+                                                data-race-id="{{ $horse['past_races'][$i]->id }}"
+                                                data-memo="{{ e($horse['past_races'][$i]->memo ?? '') }}">
                                                 {{ $horse['past_races'][$i]->memo ?? '...' }} ✏️
                                             </a>
                                         @else
@@ -139,4 +146,25 @@
     function closeModal() {
         document.getElementById('memoModal').style.display = 'none';
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.open-memo').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                const horseId = this.dataset.horseId;
+                const raceId = this.dataset.raceId;
+                const memo = this.dataset.memo;
+                openModal(horseId, raceId, memo);
+            });
+        });
+
+        document.querySelectorAll('.open-horse-memo').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                const horseId = this.dataset.horseId;
+                const memo = this.dataset.memo;
+                openHorseMemoModal(horseId, memo);
+            });
+        });
+    });
 </script>
