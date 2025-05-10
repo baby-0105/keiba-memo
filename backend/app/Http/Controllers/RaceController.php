@@ -146,17 +146,14 @@ class RaceController extends Controller
             $raceNumber = (int) filter_var($raceNumberRaw, FILTER_SANITIZE_NUMBER_INT);
 
             // レース情報保存
-            $mainRace = Race::updateOrCreate(
-                [
-                    'start_date' => now()->toDateString(),
-                    'race_num' => $raceNumber,
-                    'racetrack_master_id' => 1
-                ],
-                [
-                    'name' => $raceName,
-                    'is_display_to_index' => 1,
-                ]
-            );
+            $mainRace = Race::firstOrCreate([
+                'start_date' => now()->toDateString(),
+                'race_num' => $raceNumber,
+                'name' => $raceName,
+                'racetrack_master_id' => 1
+            ], [
+                'is_display_to_index' => 1,
+            ]);
 
             // 競馬場マスターをキャッシュ（DBアクセス回数削減）
             $trackCache = RacetrackMaster::pluck('id', 'name')->toArray();
